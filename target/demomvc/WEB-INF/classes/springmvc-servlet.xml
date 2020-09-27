@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/mvc
+       https://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd">
+    <!--1.注解驱动-->
+    <!--简化配置，自动注册DafaultAnnotationHandlerMapping,AnnotationMethodHandlerAdapter(默认注解映射和注解方法适配)    -->
+    <!--提供一些功能：数据绑定，数字和日期等-->
+    <!--SpringMVC需要通过这两个Bean实例来完成对@Controller和RequestMapping等注解的支持 -->
+    <mvc:annotation-driven/>
+    <!--2.静态资源过滤-->
+    <!--加入对静态资源的处理，js,gif,png -->
+    <!--允许使用“/”做整体映射    -->
+    <mvc:default-servlet-handler/>
+    <!--3.扫描包-->
+    <!--扫描跟web相关的包，一般放在controller层,实现注解驱动Bean的定义，同时将Bean自动注入Spring容器中使用。换句话说，如果没有此标签，@Controller注解的Bean就仅仅是一个葡萄的javaBean，而不是一个可以处理请求的控制器   -->
+    <!--    -->
+    <context:component-scan base-package="com.cat.controller"/>
+    <!--4.视图解析器,ViewResolver -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="internalResourceViewResolver">
+<!--         <property name="viewClass" value="org.springframework.web.servlet.view.J"-->
+        <!--前缀-->
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <!--后缀-->
+        <property name="suffix" value=".jsp"/>
+<!--        <property nacame="suffix" value=".html"/>-->
+    </bean>
+
+</beans>
