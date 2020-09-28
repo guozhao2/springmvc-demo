@@ -4,7 +4,7 @@
     <title>Title</title>
 </head>
 <body>
-hello.jsp页面
+hello2.jsp页面
 <p>姓名：${name}</p>
 <p>性别：${sex}</p>
 <p>年龄:${age}</p>
